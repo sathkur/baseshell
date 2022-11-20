@@ -52,10 +52,10 @@ const Header = () => {
                     <div id="logo"><h5>Logo {(navScrolled) ? "Scrolled" : "Top"}</h5></div>
                     <nav>
                         <div className="flex justify-between space-x-6 font-semibold relative inline-block text-left">
-                            {nav_links.map(link => {
+                            {nav_links.map((link, i) => {
                                 if("children" in link) {
                                   var menu = (
-                                    <DropdownMenu.Root>
+                                    <DropdownMenu.Root key={i}>
                                         <DropdownMenu.Trigger asChild>
                                             <button className="IconButton" aria-label="Customise options">
                                             {link.label}
@@ -64,15 +64,15 @@ const Header = () => {
 
                                         <DropdownMenu.Portal>
                                             <DropdownMenu.Content className="min-w-[10em] md:min-w-[12em] rounded-lg py-2 shadow-2xl bg-white" sideOffset={5}>
-                                            {link.children.map(child_link => {
+                                            {link.children.map((child_link, i) => {
                                                 var sub_menu;
                                                 if(child_link.type && child_link.type == "seperator") {
                                                     sub_menu = (
-                                                        <DropdownMenu.Separator className="my-1 h-px bg-gray-200" />
+                                                        <DropdownMenu.Separator className="my-1 h-px bg-gray-200" key={i}/>
                                                     );
                                                 } else {
                                                     sub_menu = (
-                                                        <DropdownMenu.Item className="flex cursor-default select-none items-center py-2 outline-none text-sm focus:bg-gray-200 ">
+                                                        <DropdownMenu.Item className="flex cursor-default select-none items-center py-2 outline-none text-sm focus:bg-gray-200 " key={i}>
                                                             <span className="flex-grow px-4">
                                                                 {child_link.label}
                                                             </span>
@@ -88,7 +88,7 @@ const Header = () => {
                                   )
                                 } else {
                                     var menu = (
-                                        <span className={"font-semibold " + ((link.class) ? link.class: "")}>
+                                        <span className={"font-semibold " + ((link.class) ? link.class: "")} key={i}>
                                             {(link.link) ? (<Link href={link.link}>{link.label}</Link>) : link.label}
                                         </span>
                                     )

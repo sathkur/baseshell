@@ -15,9 +15,9 @@ const Footer = () => {
             <footer className="py-7 border-t-2 border-gray-500">
                 <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:justify-between ">
                     <div className="flex">
-                        {privacy_links.map(link => {
+                        {privacy_links.map((link, i) => {
                             return (
-                                <span className={"font-semibold " + ((link.class) ? link.class: "")}>
+                                <span className={"font-semibold " + ((link.class) ? link.class: "")} key={i}>
                                     {(link.link) ? (<a className="hover:underline" href={link.link}>{link.label}</a>) : link.label}
                                 </span>
                             )
