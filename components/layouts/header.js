@@ -28,6 +28,7 @@ const Header = () => {
     ];
 
     const [navScrolled, setNavScrolled] = useState(false);
+    const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
     const handleScroll = () => {
         if(window.scrollY > 25) {
@@ -47,10 +48,10 @@ const Header = () => {
     }, []);
 
     return (
-        <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-300 " + ((navScrolled) ? "bg-white" : "")}>
+        <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-white" : "")}>
             <div className={navScrolled ? "py-4 transition-all duration-300" : "py-6 transition-all duration-300"}>
                 <header className="flex items-center justify-between">
-                    <div id="logo"><Image src="/logo.svg" alt="Site Logo" width={72} height={16} /></div>
+                    <div id="logo"><Image src="/logo.svg" alt="Site Logo" width={40} height={40} /></div>
 
                     <nav>
                         <div className="hidden md:flex justify-between space-x-6 font-semibold relative text-left">
@@ -101,7 +102,16 @@ const Header = () => {
                             })}
                         </div>
                         <div className="md:hidden">
-                            <HamburgerMenuIcon />
+                            <HamburgerMenuIcon onClick={() => setMobileNavOpen(!mobileNavOpen)}/>
+                            <div className={"fixed w-full left-0 right-0 min-h-screen bg-gray-400 transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
+                                <div className="flex flex-col">
+                                    <a>test 1</a>
+                                    <a>test 2</a>
+                                    <a>test 3</a>
+                                    <a>test 4</a>
+                                </div>
+                            </div>
+
                         </div>
                     </nav>
                     
