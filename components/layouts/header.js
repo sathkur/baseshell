@@ -8,6 +8,7 @@ import {
     CheckIcon,
     ChevronRightIcon,
   } from '@radix-ui/react-icons';
+import Image from "next/image";
 
 const Header = () => {
 
@@ -17,7 +18,7 @@ const Header = () => {
         {label: "Contact us", link: "/contact-us"},
         {label: "Careers", link: "/careers"},
         {label: "Company Details", link: "company-details"},
-        {label: <HamburgerMenuIcon />, link: "", children: [
+        {label: "User", link: "", children: [
           {label: "Sign up", link: "/account"},
           {label: "Login", link: "/logout"},
           {label: "Seperator", type: "seperator"},
@@ -49,9 +50,10 @@ const Header = () => {
         <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-300 " + ((navScrolled) ? "bg-white" : "")}>
             <div className={navScrolled ? "py-4 transition-all duration-300" : "py-6 transition-all duration-300"}>
                 <header className="flex items-center justify-between">
-                    <div id="logo"><h5>Logo {(navScrolled) ? "Scrolled" : "Top"}</h5></div>
+                    <div id="logo"><Image src="/logo.svg" alt="Site Logo" width={72} height={16} /></div>
+
                     <nav>
-                        <div className="flex justify-between space-x-6 font-semibold relative inline-block text-left">
+                        <div className="hidden md:flex justify-between space-x-6 font-semibold relative text-left">
                             {nav_links.map((link, i) => {
                                 if("children" in link) {
                                   var menu = (
@@ -97,6 +99,9 @@ const Header = () => {
                                     menu
                                 );
                             })}
+                        </div>
+                        <div className="md:hidden">
+                            <HamburgerMenuIcon />
                         </div>
                     </nav>
                     
