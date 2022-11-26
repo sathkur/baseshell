@@ -8,7 +8,8 @@ const Footer = () => {
         {label: "Company Details", link: "company-details"},
     ];
 
-    privacy_links = [].concat(...privacy_links.map(n => [n, {label: "·", class: "px-2"}])).slice(0, -1)
+    //add a '.' dot between links
+    privacy_links = [].concat(...privacy_links.map(n => [n, {label: "·", class: "px-2"}])).slice(0, -1);
 
     return (
         <div className="container m-auto px-6">

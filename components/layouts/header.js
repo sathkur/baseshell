@@ -48,13 +48,13 @@ const Header = () => {
     }, []);
 
     return (
-        <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-white" : "")}>
+        <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-slate-700" : "")}>
             <div className={navScrolled ? "py-4 transition-all duration-300" : "py-6 transition-all duration-300"}>
                 <header className="flex items-center justify-between">
                     <div id="logo"><Image src="/logo.svg" alt="Site Logo" width={40} height={40} /></div>
 
                     <nav>
-                        <div className="hidden md:flex justify-between space-x-6 font-semibold relative text-left">
+                        <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
                             {nav_links.map((link, i) => {
                                 if("children" in link) {
                                   var menu = (
@@ -91,8 +91,8 @@ const Header = () => {
                                   )
                                 } else {
                                     var menu = (
-                                        <span className={"font-semibold " + ((link.class) ? link.class: "")} key={i}>
-                                            {(link.link) ? (<Link href={link.link}>{link.label}</Link>) : link.label}
+                                        <span className={" " + ((link.class) ? link.class: "")} key={i}>
+                                            {(link.link) ? (<Link href={link.link} className={"text-lg " + ((navScrolled) ? "link_inverted" : "link")}>{link.label}</Link>) : link.label}
                                         </span>
                                     )
                                 }

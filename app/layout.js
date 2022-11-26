@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
               <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </head>
-            <body>
+            <body className='font-Varela_Round'>
               <div className="bg-gray-300">
                 <Header/>
                 <main id="main" className="container m-auto px-6 min-h-screen ">
