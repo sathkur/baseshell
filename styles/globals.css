@@ -40,11 +40,11 @@ a {
   }
 
   .link {
-    @apply text-link_dark hover:text-link_dark_hover font-semibold transition-all duration-300;
+    @apply text-link_dark hover:text-link_dark_hover font-semibold transition-all duration-300 flex items-center;
   }
 
   .link_inverted {
-    @apply text-link_light hover:text-link_light_hover font-semibold transition-all duration-300;
+    @apply text-link_light hover:text-link_light_hover font-semibold transition-all duration-300 flex items-center;
   }
 
 }

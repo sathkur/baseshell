@@ -12,8 +12,15 @@ import Image from "next/image";
 
 const Header = () => {
 
+    const HomeNav = () => (
+        <div id="logo" className="flex items-center">
+            <Image src="/logo.svg" alt="Site Logo" width={40} height={40} />
+            <span>Home</span>
+        </div>
+    );
+
     let nav_links = [
-        {label: "Home", link: ""},
+        {label: <HomeNav />, link: ""},
         {label: "About us", link: "/about-us"},
         {label: "Contact us", link: "/contact-us"},
         {label: "Careers", link: "/careers"},
@@ -28,7 +35,7 @@ const Header = () => {
 
     let secondary_nav_links = [
         {label: "Sign In", link: ""},
-        {label: "Join Us", link: "/about-us"}
+        {label: "Join Us", link: "/about-us", classes: "text-green-400"}
     ];
 
     const [navScrolled, setNavScrolled] = useState(false);
@@ -53,14 +60,17 @@ const Header = () => {
 
     return (
         <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-gray-700" : "")}>
-            <div className={navScrolled ? "py-4 transition-all duration-300" : "py-6 transition-all duration-300"}>
-                <header className="flex items-center justify-between">
-                    <div id="logo"><Image src="/logo.svg" alt="Site Logo" width={40} height={40} /></div>
+            <div className={navScrolled ? "py-3 transition-all duration-300" : "py-5 transition-all duration-300"}>
+                <header className="">
 
-                    <nav>
+                    <nav className="flex items-center justify-between">
 
                         <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
                             <MenuNav links={nav_links} scrolled={navScrolled}/>
+                        </div>
+
+                        <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
+                            <MenuNav links={secondary_nav_links} scrolled={navScrolled}/>
                         </div>
                         
 
@@ -96,7 +106,7 @@ const MenuNav = (props) => {
                 var menu = (
                 <DropdownMenu.Root key={i}>
                     <DropdownMenu.Trigger asChild>
-                        <button className="IconButton" aria-label="Customise options">
+                        <button className={((link.classes) ? link.classes: "") + " text-lg " + ((scrolled) ? "link_inverted" : "link")} aria-label="Customise options">
                         {link.label}
                         </button>
                     </DropdownMenu.Trigger>
@@ -127,7 +137,7 @@ const MenuNav = (props) => {
                 )
             } else {
                 var menu = (
-                    <span className={((link.class) ? link.class: "") + "text-lg " + ((scrolled) ? "link_inverted" : "link")} key={i}>
+                    <span className={((link.classes) ? link.classes: "") + " text-lg " + ((scrolled) ? "link_inverted" : "link")} key={i}>
                         {(link.link) ? (<Link href={link.link}>{link.label}</Link>) : link.label}
                     </span>
                 )
