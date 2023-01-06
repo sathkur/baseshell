@@ -20,7 +20,7 @@ const Header = () => {
     );
 
     let nav_links = [
-        {label: <HomeNav />, link: ""},
+        {label: <HomeNav />, link: "/"},
         {label: "About us", link: "/about-us"},
         {label: "Contact us", link: "/contact-us"},
         {label: "Careers", link: "/careers"},
@@ -34,8 +34,15 @@ const Header = () => {
     ];
 
     let secondary_nav_links = [
-        {label: "Sign In", link: ""},
+        {label: "Sign In", link: "/login"},
         {label: "Join Us", link: "/about-us", classes: "text-green-400"}
+    ];
+
+    let mobile_links = [
+        {label: "Home", link: "/"},
+        {label: "About us", link: "/about-us"},
+        {label: "Contact us", link: "/contact-us"},
+        {label: "Careers", link: "/careers"}
     ];
 
     const [navScrolled, setNavScrolled] = useState(false);
@@ -59,37 +66,35 @@ const Header = () => {
     }, []);
 
     return (
-        <div className={"container m-auto px-6 sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-gray-700" : "")}>
-            <div className={navScrolled ? "py-3 transition-all duration-300" : "py-5 transition-all duration-300"}>
-                <header className="">
+        <div className={"sticky top-0 border-b-[1px] border-gray-600 " + ((navScrolled) ? "bg-gray-700" : "bg-gray-700")}>
+            <div className={"container m-auto px-6 "}>
+                <div className={navScrolled ? "py-3 transition-all duration-300" : "py-5 transition-all duration-300"}>
+                    <header className="">
 
-                    <nav className="flex items-center justify-between">
+                        <nav className="flex items-center justify-between">
 
-                        <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
-                            <MenuNav links={nav_links} scrolled={navScrolled}/>
-                        </div>
-
-                        <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
-                            <MenuNav links={secondary_nav_links} scrolled={navScrolled}/>
-                        </div>
-                        
-
-
-                        <div className="md:hidden">
-                            <HamburgerMenuIcon onClick={() => setMobileNavOpen(!mobileNavOpen)}/>
-                            <div className={"fixed w-full left-0 right-0 min-h-screen bg-gray-400 transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
-                                <div className="flex flex-col">
-                                    <a>test 1</a>
-                                    <a>test 2</a>
-                                    <a>test 3</a>
-                                    <a>test 4</a>
-                                </div>
+                            <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
+                                <MenuNav links={nav_links} scrolled={navScrolled}/>
                             </div>
 
-                        </div>
-                    </nav>
-                    
-                </header>
+                            <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
+                                <MenuNav links={secondary_nav_links} scrolled={navScrolled}/>
+                            </div>
+
+
+                            <div className="md:hidden">
+                                <HamburgerMenuIcon onClick={() => setMobileNavOpen(!mobileNavOpen)}/>
+                                <div className={"fixed w-full left-0 right-0 min-h-screen bg-gray-400 transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
+                                    <div className="flex flex-col">
+                                        <MobileNav links={mobile_links} />
+                                    </div>
+                                </div>
+
+                            </div>
+                        </nav>
+                        
+                    </header>
+                </div>
             </div>
         </div>
     );
@@ -102,11 +107,12 @@ const MenuNav = (props) => {
     return (
         <>
         {links.map((link, i) => {
+            var menu;
             if("children" in link) {
-                var menu = (
+                menu = (
                 <DropdownMenu.Root key={i}>
                     <DropdownMenu.Trigger asChild>
-                        <button className={((link.classes) ? link.classes: "") + " text-lg " + ((scrolled) ? "link_inverted" : "link")} aria-label="Customise options">
+                        <button className={((link.classes) ? link.classes: "") + " text-lg link_inverted"} aria-label="Customise options">
                         {link.label}
                         </button>
                     </DropdownMenu.Trigger>
@@ -136,8 +142,8 @@ const MenuNav = (props) => {
                 </DropdownMenu.Root>
                 )
             } else {
-                var menu = (
-                    <span className={((link.classes) ? link.classes: "") + " text-lg " + ((scrolled) ? "link_inverted" : "link")} key={i}>
+                menu = (
+                    <span className={((link.classes) ? link.classes: "") + " text-lg link_inverted"} key={i}>
                         {(link.link) ? (<Link href={link.link}>{link.label}</Link>) : link.label}
                     </span>
                 )
@@ -146,6 +152,33 @@ const MenuNav = (props) => {
                 menu
             );
         })}
+        </>
+    )
+}
+
+const MobileNav = (props) => {
+    const {links} = props;
+
+    return (
+        <>
+            {links.map((link, i) => {
+                var menu;
+                if("children" in link) {
+                    menu = (
+                        <li>
+                            <Link href={link.link}>{link.label}</Link>
+                        </li>
+                    );
+                } else {
+                    menu = (
+                        <li>
+                            <Link href={link.link}>{link.label}</Link>
+                        </li>
+                    );
+                }
+                
+                return menu;
+            })}
         </>
     )
 }

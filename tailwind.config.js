@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
     extend: {
@@ -16,6 +16,7 @@ module.exports = {
         'link_light_hover': "#fff",
         'link_dark': "#6a787c",
         'link_dark_hover': "#384047",
+        'theme_font_dark': '#40484a',
       }
     },
   },
