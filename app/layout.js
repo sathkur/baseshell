@@ -17,7 +17,7 @@ const MainLayout = ({ children }) => {
                 <div className="bg-gray-300">
                   <Header/>
                   <main id="main" className="container m-auto px-6 min-h-screen ">
-                      <div><h5>Main Layout</h5></div>
+                      {/* <div><h5>Main Layout</h5></div> */}
                       {children}
                   </main>
                   <Footer/>

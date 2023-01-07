@@ -39,12 +39,79 @@ a {
     @apply rounded-full py-2 px-4 font-semibold hover:bg-gray-200 focus:outline-none  align-baseline cursor-pointer;
   }
 
-  .link {
+  /* Menu Navigation */
+  .nav-menu {
     @apply text-link_dark hover:text-link_dark_hover font-semibold transition-all duration-300 flex items-center;
   }
 
-  .link_inverted {
-    @apply text-link_light hover:text-link_light_hover font-semibold transition-all duration-300 flex items-center;
+  .nav-menu_inverted {
+    @apply text-theme_font_light hover:text-link_light_hover font-semibold transition-all duration-300 flex items-center;
+  }
+
+  /* Colors */
+
+
+
+  
+  /* Typography */
+  .font_color {
+    @apply text-theme_font_dark dark:text-theme_font_light;
+  }
+  .heading {
+    @apply font-extrabold font_color;
+  }
+  .heading_h1 {
+    @apply heading text-8xl;
+  }
+  .heading_h2 {
+    @apply heading text-7xl;
+  }
+  .heading_h3 {
+    @apply heading text-5xl;
+  }
+  .heading_h4 {
+    @apply heading text-3xl;
+  }
+  .heading_h5 {
+    @apply heading text-2xl;
+  }
+  .heading_h6 {
+    @apply heading text-xl;
+  }
+  .body1 {
+    @apply text-base font_color;
+  }
+  .body2{
+    @apply text-sm font_color;
+  }
+  .link{
+    @apply font-bold;
+  }
+  
+  /* Buttons */
+
+  .button {
+    @apply  font-bold py-2 px-4 rounded;
+  }
+
+  .button-primary {
+    @apply bg-blue-500 hover:bg-blue-700 text-white;
+    
+  }
+
+  .button-disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .button-outline {
+    @apply bg-transparent hover:bg-transparent text-theme_font_dark font-semibold border-2 border-theme_font_dark ;
+  }
+
+
+
+
+  .box {
+    @apply p-7 bg-white rounded-md shadow-xl;
   }
 
 }

@@ -1,14 +1,17 @@
 'use client';
 
 import { createContext, useState } from 'react';
+import usePresistState from '../components/usePresistState';
 
 export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("darkaa")
+  const [darkMode, setDarkMode] = usePresistState('dark_mode', false)
   return (
-    <ThemeContext.Provider value={{theme, setTheme}}>
-      {children}
+    <ThemeContext.Provider value={{darkMode, setDarkMode}}>
+      <div className={" " + (darkMode ? "dark" : "")}>
+        {children}
+      </div>
     </ThemeContext.Provider>
   );
 }

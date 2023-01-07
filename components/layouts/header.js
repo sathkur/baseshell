@@ -9,8 +9,11 @@ import {
     ChevronRightIcon,
   } from '@radix-ui/react-icons';
 import Image from "next/image";
+import { ThemeContext } from "../../app/theme-provider";
 
 const Header = () => {
+
+    const {darkMode, setDarkMode} = React.useContext(ThemeContext);
 
     const HomeNav = () => (
         <div id="logo" className="flex items-center">
@@ -24,6 +27,9 @@ const Header = () => {
         {label: "About us", link: "/about-us"},
         {label: "Contact us", link: "/contact-us"},
         {label: "Careers", link: "/careers"},
+        {label: "Theme", link: "/theme"},
+        {label: "Live", link: "https://baseshell-xf5r.vercel.app/"},
+
         {label: "User", link: "", children: [
           {label: "Sign up", link: "/account"},
           {label: "Login", link: "/logout"},
@@ -35,7 +41,10 @@ const Header = () => {
 
     let secondary_nav_links = [
         {label: "Sign In", link: "/login"},
-        {label: "Join Us", link: "/about-us", classes: "text-green-400"}
+        {label: "Join Us", link: "/about-us", classes: "text-green-400"},
+        {label: <input type="checkbox" onClick={() => {setDarkMode(!darkMode)}}/>}
+
+        
     ];
 
     let mobile_links = [
@@ -81,7 +90,7 @@ const Header = () => {
                                 <MenuNav links={secondary_nav_links} scrolled={navScrolled}/>
                             </div>
 
-
+                            
                             <div className="md:hidden">
                                 <HamburgerMenuIcon onClick={() => setMobileNavOpen(!mobileNavOpen)}/>
                                 <div className={"fixed w-full left-0 right-0 min-h-screen bg-gray-400 transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
@@ -112,7 +121,7 @@ const MenuNav = (props) => {
                 menu = (
                 <DropdownMenu.Root key={i}>
                     <DropdownMenu.Trigger asChild>
-                        <button className={((link.classes) ? link.classes: "") + " text-lg link_inverted"} aria-label="Customise options">
+                        <button className={((link.classes) ? link.classes: "") + " text-lg nav-menu_inverted"} aria-label="Customise options">
                         {link.label}
                         </button>
                     </DropdownMenu.Trigger>
@@ -143,7 +152,7 @@ const MenuNav = (props) => {
                 )
             } else {
                 menu = (
-                    <span className={((link.classes) ? link.classes: "") + " text-lg link_inverted"} key={i}>
+                    <span className={((link.classes) ? link.classes: "") + " text-lg nav-menu_inverted"} key={i}>
                         {(link.link) ? (<Link href={link.link}>{link.label}</Link>) : link.label}
                     </span>
                 )
