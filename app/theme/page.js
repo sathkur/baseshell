@@ -59,6 +59,8 @@ const Buttons = () => {
             <button className="button button-primary">Button Primary</button>
             <button className="button button-primary button-disabled">Button Disabled</button>
             <button className="button button-primary button-outline">Button Disabled</button>
+            <button className="button button-primary button-sm">Button Small</button>
+            <button className="button button-primary button-lg">Button Large</button>
         </>
     )
 }
