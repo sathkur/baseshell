@@ -1,4 +1,4 @@
-// import '../styles/globals.css'
+import '../styles/globals.css'
 
 // export default function Page() {
     
@@ -16,10 +16,20 @@ export default () => {
             <Typography/>
             <Buttons/>
             <Colors/>
+            <InputFields/>
         </div>
     );
 }
 
+const InputFields = () => {
+
+    return (
+        <>
+
+            <input class="input" type="text" placeholder="Input element"></input>
+        </>
+    );
+}
 
 const Typography = () => {
     
