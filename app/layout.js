@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Header from '../components/layouts/header'
 import Footer from '../components/layouts/footer'
 import {ThemeProvider} from './theme-provider';
+import '../styles/globals.css'
 
 
 const MainLayout = ({ children }) => {
