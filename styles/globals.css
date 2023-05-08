@@ -39,14 +39,19 @@ a {
     @apply rounded-full py-2 px-4 font-semibold hover:bg-gray-200 focus:outline-none  align-baseline cursor-pointer;
   }
 
-  /* Menu Navigation */
-  .nav-menu {
-    @apply text-link_dark hover:text-link_dark_hover font-semibold transition-all duration-300 flex items-center;
-  }
 
-  .nav-menu_inverted {
-    @apply text-theme_font_light hover:text-link_light_hover font-semibold transition-all duration-300 flex items-center;
+
+  @keyframes enter-animation {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
+  
 
   /* Colors */
 
@@ -54,11 +59,17 @@ a {
 
   
   /* Typography */
-  .font_color {
+  body {
+    /* @apply theme_font_color; */
+  }
+  .theme_font_color {
     @apply text-theme_font_dark dark:text-theme_font_light;
   }
+  .theme_font_color_inverted {
+    @apply text-theme_font_light dark:text-theme_font_dark;
+  }
   .heading {
-    @apply font-extrabold font_color;
+    @apply font-extrabold;
   }
   .heading_h1 {
     @apply heading text-8xl;
@@ -79,13 +90,28 @@ a {
     @apply heading text-xl;
   }
   .body1 {
-    @apply text-base font_color;
+    @apply text-base theme_font_color;
   }
   .body2{
-    @apply text-sm font_color;
+    @apply text-sm theme_font_color;
+  }
+  .link_defaults {
+    @apply font-bold transition-all duration-1000;
   }
   .link{
-    @apply font-bold;
+    @apply link_defaults theme_font_color hover:theme_font_color_inverted;
+  }
+  .link_inverted{
+    @apply link_defaults theme_font_color_inverted hover:theme_font_color;
+  }
+
+  /* Menu Navigation */
+  .nav-menu {
+    @apply link_defaults text-link_dark hover:text-link_dark_hover font-semibold flex items-center;
+  }
+
+  .nav-menu_inverted {
+    @apply link_defaults text-theme_font_light hover:text-link_light_hover font-semibold flex items-center;
   }
   
   /* Buttons */
@@ -123,9 +149,10 @@ a {
 
 
   .box {
-    @apply p-7 bg-white rounded-md ;
-    box-shadow: 0 3px 0 rgb(0 0 0 / 6%);
-    animation: panel-fade-up 0.4s ease;
+    @apply p-7 bg-white rounded-md dark:bg-gray-600 shadow-[0_3px_0_rgba(0,0,0,0.06)] dark:shadow-[0_3px_0_rgb(255,255,255,0.06)];
+    /* box-shadow: 0 3px 0 rgb(0 0 0 / 6%); */
+    animation: panel-fade-up 0.4s ease; /* enter-animation 0.8s 1; */
+    
   }
 
 }

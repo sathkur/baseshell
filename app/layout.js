@@ -15,7 +15,7 @@ const MainLayout = ({ children }) => {
             </head>
             <body className='font-Varela_Round'>
               <ThemeProvider>
-                <div className="bg-gray-300">
+                <div className="theme_font_color bg-gray-300 dark:bg-gray-700 ">
                   <Header/>
                   <main id="main" className="container m-auto px-6 min-h-screen ">
                       {/* <div><h5>Main Layout</h5></div> */}

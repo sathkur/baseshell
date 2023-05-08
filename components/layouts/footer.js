@@ -1,7 +1,6 @@
 const Footer = () => {
 
     let privacy_links = [
-        {label: "© 2022 Website, Inc.", link: ""},
         {label: "Privacy", link: "/privacy"},
         {label: "Terms", link: "/terms"},
         {label: "Sitemap", link: "/sitemap"},
@@ -9,14 +8,15 @@ const Footer = () => {
     ];
 
     //add a '.' dot between links
-    privacy_links = [].concat(...privacy_links.map(n => [n, {label: "·", class: "px-2"}])).slice(0, -1);
+    privacy_links = [].concat(...privacy_links.map(n => [n, {label: "·", class: "hidden md:block px-2"}])).slice(0, -1);
 
     return (
         <div className="border-t-2 border-gray-500">
             <div className="container m-auto px-6">
                 <footer className="py-7 ">
                     <div className="flex flex-col-reverse items-start md:flex-row md:items-center md:justify-between ">
-                        <div className="flex">
+                        <div className="font-bold"><span>© 2023 Website, Inc.</span></div>
+                        <div className="flex flex-col md:flex-row">
                             {privacy_links.map((link, i) => {
                                 return (
                                     <span className={"font-medium " + ((link.class) ? link.class: "")} key={i}>

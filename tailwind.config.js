@@ -12,13 +12,13 @@ module.exports = {
         Varela_Round: ["'Varela Round', sans-serif"]
       },
       colors: {
-        'theme_dark': "",
+        'theme-dark': "rgb(55 65 81)",
         'link_light_hover': "#fff",
-        'link_dark': "#6a787c",
+        'link_dark': '#6a787c',
         'link_dark_hover': "#384047",
 
         'theme_font_dark': '#40484a',
-        'theme_font_light': "#adb6b9",
+        'theme_font_light': "rgb(211 211 211)",
         'theme_link_dark': "#6a787c",
         'theme_link_dark_hover': "#384047",
         'theme_link_light': "#fff",

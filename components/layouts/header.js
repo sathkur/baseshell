@@ -80,7 +80,7 @@ const Header = () => {
                 <div className={navScrolled ? "py-3 transition-all duration-300" : "py-5 transition-all duration-300"}>
                     <header className="">
 
-                        <nav className="flex items-center justify-between">
+                        <nav className="flex items-center justify-end md:justify-between">
 
                             <div className={"hidden md:flex justify-between space-x-6 font-semibold relative text-left "  + ((navScrolled) ? "text-white" : "")}>
                                 <MenuNav links={nav_links} scrolled={navScrolled}/>
@@ -93,7 +93,7 @@ const Header = () => {
                             
                             <div className="md:hidden">
                                 <HamburgerMenuIcon onClick={() => setMobileNavOpen(!mobileNavOpen)}/>
-                                <div className={"fixed w-full left-0 right-0 min-h-screen bg-gray-400 transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
+                                <div className={"fixed w-full left-0 right-0 min-h-screen bg-theme-dark transition-all duration-300 transform " + ((mobileNavOpen) ? "translate-x-0" : "translate-x-full")}>
                                     <div className="flex flex-col">
                                         <MobileNav links={mobile_links} />
                                     </div>
@@ -121,7 +121,7 @@ const MenuNav = (props) => {
                 menu = (
                 <DropdownMenu.Root key={i}>
                     <DropdownMenu.Trigger asChild>
-                        <button className={((link.classes) ? link.classes: "") + " text-lg nav-menu_inverted"} aria-label="Customise options">
+                        <button className={"text-lg nav-menu_inverted " + ((link.classes) ? link.classes: "")} aria-label="Customise options">
                         {link.label}
                         </button>
                     </DropdownMenu.Trigger>
@@ -174,15 +174,15 @@ const MobileNav = (props) => {
                 var menu;
                 if("children" in link) {
                     menu = (
-                        <li>
+                        <div>
                             <Link href={link.link}>{link.label}</Link>
-                        </li>
+                        </div>
                     );
                 } else {
                     menu = (
-                        <li>
-                            <Link href={link.link}>{link.label}</Link>
-                        </li>
+                        <div className="pl-10 py-5">
+                            <Link className="theme_font_color heading_h5 " href={link.link}>{link.label}</Link>
+                        </div>
                     );
                 }
                 

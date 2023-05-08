@@ -11,12 +11,14 @@ import tailwindConfig  from '../tailwind.config';
 export default () => {
 
     return (
-        <div className='box my-10'>
-            <Typography/>
-            <Buttons/>
-            <Colors/>
-            <InputFields/>
-        </div>
+        <>
+            <div className='box my-10'>
+                <Typography/>
+                <Buttons/>
+                <Colors/>
+                <InputFields/>
+            </div>
+        </>
     );
 }
 
@@ -43,7 +45,8 @@ const Typography = () => {
             <p class="lead-text">Lead Text</p>
             <p class="body1">Body 1</p>
             <p class="body2">Body 2</p>
-            <a class="link" href="#">Link</a>
+            <a class="link" href="#">Link</a><br/>
+            <a class="link_inverted" href="#">Link</a>
             <p class="action-medium">Action Medium</p>
             <p class="nav-menu">Navigation Menu</p>
             <p class="nav-menu_inverted">Navigation Menu Inverted</p>
