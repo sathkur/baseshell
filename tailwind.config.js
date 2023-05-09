@@ -13,16 +13,17 @@ module.exports = {
       },
       colors: {
         'theme-dark': "rgb(55 65 81)",
-        'link_light_hover': "#fff",
-        'link_dark': '#6a787c',
-        'link_dark_hover': "#384047",
 
         'theme_font_dark': '#40484a',
-        'theme_font_light': "rgb(211 211 211)",
-        'theme_link_dark': "#6a787c",
-        'theme_link_dark_hover': "#384047",
-        'theme_link_light': "#fff",
-        'theme_link_light_hover': "#fff",
+        'theme_font_darker': '#000',
+        'theme_font_light': "#D3D3D3",
+        'theme_font_lighter': "#fff",
+
+
+        'nav_menu': '#6a787c',
+        'nav_menu_hover': "#384047",
+        'nav_menu_light_hover': "#fff",
+
       }
     },
   },

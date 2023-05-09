@@ -72,13 +72,13 @@ a {
     @apply font-extrabold;
   }
   .heading_h1 {
-    @apply heading text-8xl;
-  }
-  .heading_h2 {
     @apply heading text-7xl;
   }
-  .heading_h3 {
+  .heading_h2 {
     @apply heading text-5xl;
+  }
+  .heading_h3 {
+    @apply heading text-4xl;
   }
   .heading_h4 {
     @apply heading text-3xl;
@@ -99,19 +99,16 @@ a {
     @apply font-bold transition-all duration-1000;
   }
   .link{
-    @apply link_defaults theme_font_color hover:theme_font_color_inverted;
-  }
-  .link_inverted{
-    @apply link_defaults theme_font_color_inverted hover:theme_font_color;
+    @apply link_defaults hover:text-theme_font_darker dark:hover:text-theme_font_lighter;
   }
 
   /* Menu Navigation */
   .nav-menu {
-    @apply link_defaults text-link_dark hover:text-link_dark_hover font-semibold flex items-center;
+    @apply link_defaults text-nav_menu hover:text-nav_menu_hover font-semibold flex items-center;
   }
 
   .nav-menu_inverted {
-    @apply link_defaults text-theme_font_light hover:text-link_light_hover font-semibold flex items-center;
+    @apply link_defaults text-theme_font_light hover:text-nav_menu_light_hover font-semibold flex items-center;
   }
   
   /* Buttons */

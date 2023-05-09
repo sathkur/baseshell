@@ -20,7 +20,7 @@ const Footer = () => {
                             {privacy_links.map((link, i) => {
                                 return (
                                     <span className={"font-medium py-1.5 md:py-0 " + ((link.class) ? link.class: "")} key={i}>
-                                        {(link.link) ? (<a className="underline " href={link.link}>{link.label}</a>) : link.label}
+                                        {(link.link) ? (<a className="link underline " href={link.link}>{link.label}</a>) : link.label}
                                     </span>
                                 )
                             })}
