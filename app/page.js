@@ -46,7 +46,6 @@ const Typography = () => {
             <p class="body1">Body 1</p>
             <p class="body2">Body 2</p>
             <a class="link" href="#">Link</a><br/>
-            <a class="link_inverted" href="#">Link Inverted</a>
             <p class="action-medium">Action Medium</p>
             <p class="nav-menu">Navigation Menu</p>
             <p class="nav-menu_inverted">Navigation Menu Inverted</p>
