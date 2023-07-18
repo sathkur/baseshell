@@ -31,7 +31,10 @@ const Header = () => {
         {label: "Live", link: "https://baseshell-xf5r.vercel.app/"},
 
         {label: "User", link: "", children: [
-          {label: "Sign up", link: "/account"},
+          {label: "Sign up", link: "/account", children: [
+            {label: "Register", link: "/account"},
+            {label: "Login with Google", link: "/account"}
+          ]},
           {label: "Login", link: "/logout"},
           {label: "Seperator", type: "seperator"},
           {label: "Help", link: "/logout"},
@@ -135,13 +138,43 @@ const MenuNav = (props) => {
                                     <DropdownMenu.Separator className="my-1 h-px bg-gray-200" key={i}/>
                                 );
                             } else {
-                                sub_menu = (
-                                    <DropdownMenu.Item className="flex cursor-default select-none items-center py-2 outline-none text-sm focus:bg-gray-200 " key={i}>
-                                        <span className="flex-grow px-4">
-                                            {child_link.label}
-                                        </span>
-                                    </DropdownMenu.Item>
-                                );
+                                if(child_link.children){
+                                    sub_menu = (
+                                        <DropdownMenu.Sub>
+                                            <DropdownMenu.SubTrigger className="flex cursor-default select-none items-center py-2 outline-none text-lg nav-menu focus:bg-gray-200 ">
+                                                <span className="flex-grow px-4">{child_link.label}</span>
+                                                <div className="RightSlot">
+                                                    <ChevronRightIcon />
+                                                </div>
+                                            </DropdownMenu.SubTrigger>
+                                            <DropdownMenu.Portal>
+                                                <DropdownMenu.SubContent
+                                                    className="DropdownMenuSubContent min-w-[10em] md:min-w-[12em] rounded-lg py-2 shadow-2xl bg-white"
+                                                    sideOffset={2}
+                                                    alignOffset={-5}
+                                                >
+                                                    {child_link.children.map((sub_child, y) => {
+                                                        return (
+                                                            <DropdownMenu.Item className="flex cursor-default select-none items-center py-2 outline-none text-lg nav-menu focus:bg-gray-200 " key={i}>
+                                                                <span className="flex-grow px-4">
+                                                                    {sub_child.label}
+                                                                </span>
+                                                            </DropdownMenu.Item>
+                                                        )
+                                                    })}
+                                                </DropdownMenu.SubContent>
+                                            </DropdownMenu.Portal>
+                                        </DropdownMenu.Sub>
+                                    )
+                                } else {
+                                    sub_menu = (
+                                        <DropdownMenu.Item className="flex cursor-default select-none items-center py-2 outline-none text-lg nav-menu focus:bg-gray-200 " key={i}>
+                                            <span className="flex-grow px-4">
+                                                {child_link.label}
+                                            </span>
+                                        </DropdownMenu.Item>
+                                    );
+                                }
                             }
 
                             return sub_menu;
