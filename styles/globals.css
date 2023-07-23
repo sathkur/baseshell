@@ -34,7 +34,18 @@ a {
   }
 } */
 
+
+
 @layer components {
+
+  #logo svg {
+    @apply fill-green-400 mr-4 transition-all duration-1000;
+    min-height: 28px;
+  }
+  .nav-menu:hover #logo svg, .nav-menu_inverted:hover #logo svg {
+    @apply fill-nav_menu_light_hover transition-all duration-1000;
+  }
+
   .btn-nav-main {
     @apply rounded-full py-2 px-4 font-semibold hover:bg-gray-200 focus:outline-none  align-baseline cursor-pointer;
   }
