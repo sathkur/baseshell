@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mandali&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+/* sono */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* @media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    color: white;
+    background: black;
+  }
+} */
+
+
+
+@layer components {
+
+  #logo svg {
+    @apply fill-green-400 mr-4 transition-all duration-1000;
+    min-height: 28px;
+  }
+  .nav-menu:hover #logo svg, .nav-menu_inverted:hover #logo svg {
+    @apply fill-nav_menu_light_hover transition-all duration-1000;
+  }
+
+  .btn-nav-main {
+    @apply rounded-full py-2 px-4 font-semibold hover:bg-gray-200 focus:outline-none  align-baseline cursor-pointer;
+  }
+
+
+
+  @keyframes enter-animation {
+    0% {
+      transform: translateY(100px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+
+  /* Colors */
+
+
+
+  
+  /* Typography */
+  body {
+    /* @apply theme_font_color; */
+  }
+  .theme_font_color {
+    @apply text-theme_font_dark dark:text-theme_font_light;
+  }
+  .theme_font_color_inverted {
+    @apply text-theme_font_light dark:text-theme_font_dark;
+  }
+  .heading {
+    @apply font-extrabold;
+  }
+  .heading_h1 {
+    @apply heading text-7xl;
+  }
+  .heading_h2 {
+    @apply heading text-5xl;
+  }
+  .heading_h3 {
+    @apply heading text-4xl;
+  }
+  .heading_h4 {
+    @apply heading text-3xl;
+  }
+  .heading_h5 {
+    @apply heading text-2xl;
+  }
+  .heading_h6 {
+    @apply heading text-xl;
+  }
+  .body1 {
+    @apply text-base theme_font_color;
+  }
+  .body2{
+    @apply text-sm theme_font_color;
+  }
+  .link_defaults {
+    @apply font-bold transition-all duration-1000;
+  }
+  .link{
+    @apply link_defaults hover:text-theme_font_darker dark:hover:text-theme_font_lighter;
+  }
+
+  /* Menu Navigation */
+  .nav-menu {
+    @apply link_defaults text-nav_menu hover:text-nav_menu_hover font-semibold flex items-center;
+  }
+
+  .nav-menu_inverted {
+    @apply link_defaults text-theme_font_light hover:text-nav_menu_light_hover font-semibold flex items-center;
+  }
+  
+  /* Buttons */
+
+  .button {
+    @apply font-bold py-2 px-4 rounded border-t-2 border-b-2 border-b-black;
+  }
+
+  .button-lg {
+    @apply text-lg py-2 px-5 rounded-lg border-t-4 border-b-4;
+  }
+
+  .button-sm {
+    @apply text-sm py-1 px-2 rounded border-t-2 border-b-2;
+  }
+
+  .button-primary {
+    @apply bg-green-600 hover:bg-green-700 border-t-green-600 hover:border-t-green-700 text-white;
+    
+  }
+
+  .button-disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  .button-outline {
+    @apply bg-transparent hover:bg-transparent text-theme_font_dark font-semibold border-2 border-theme_font_dark ;
+  }
+
+
+  /* Input */
+  .inputbox {
+    /* @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ; //focus:shadow-outline */
+    /* @apply block w-full rounded-md border-0 py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 */
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+  
+  .inputbox-success {
+    @apply bg-green-50 border-green-500 text-green-900 dark:text-green-400 placeholder-green-700 dark:placeholder-green-500 focus:ring-green-500 focus:border-green-500 dark:border-green-500;
+  }
+
+  .inputbox-error {
+    @apply bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500;
+  }
+
+  .checkbox {
+    @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600;
+  }
+
+
+  .box {
+    @apply p-7 bg-white rounded-md dark:bg-gray-600 shadow-[0_3px_0_rgba(0,0,0,0.06)] dark:shadow-[0_3px_0_rgb(255,255,255,0.06)];
+    /* box-shadow: 0 3px 0 rgb(0 0 0 / 6%); */
+    animation: panel-fade-up 0.4s ease; /* enter-animation 0.8s 1; */
+    
+  }
+
+}
