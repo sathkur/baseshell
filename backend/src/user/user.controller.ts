@@ -30,8 +30,8 @@ export class UserController {
   }
 
   @Patch()
-  editUser(@GetUser('id') userId: number, @Body() dto: EditUserDto) {
-    return this.userService.editUser(userId, dto);
+  editUser(@GetUser('id') user_id: number, @Body() dto: EditUserDto) {
+    return this.userService.editUser(user_id, dto);
   }
 
   @Get()
@@ -44,7 +44,7 @@ export class UserController {
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  deleteBookmarkById(@GetUser() user: User, @Param('id', ParseIntPipe) userIdToDelete: number) {
+  deleteUserById(@GetUser() user: User, @Param('id', ParseIntPipe) userIdToDelete: number) {
     const permission = this.ac.canUser({
         resource: "profile",
         action: "update"

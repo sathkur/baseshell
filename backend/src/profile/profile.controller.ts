@@ -14,8 +14,8 @@ export class ProfileController {
     @Post('edit')
     edit(@Body() dto: EditProfileDto, @GetUser() currentUser: any) {
 
-        if(dto?.userId === undefined) {
-            dto.userId = currentUser.id;
+        if(dto?.user_id === undefined) {
+            dto.user_id = currentUser.id;
         }
 
         const permission = this.ac.canUser({
@@ -23,7 +23,7 @@ export class ProfileController {
                 action: "update"
             },
             currentUser,
-            dto.userId
+            dto.user_id
         );
 
         if (!permission) {

@@ -38,9 +38,9 @@ export class AuthService {
         profile = await tx.profile.create({
             data: {
               gender: dto.gender,
-              firstName: dto.first_name,
-              lastName: dto.last_name,
-              userId: user.id
+              first_name: dto.first_name,
+              last_name: dto.last_name,
+              user_id: user.id
             } 
           });
 
@@ -87,11 +87,11 @@ export class AuthService {
   }
 
   async signToken(
-    userId: number,
+    user_id: number,
     email: string,
   ): Promise<{ access_token: string }> {
     const payload = {
-      sub: userId,
+      sub: user_id,
       email,
     };
     const secret = this.config.get('JWT_SECRET');

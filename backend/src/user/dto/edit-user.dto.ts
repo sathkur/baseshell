@@ -11,9 +11,9 @@ export class EditUserDto {
 
   @IsString()
   @IsOptional()
-  firstName?: string;
+  first_name?: string;
 
   @IsString()
   @IsOptional()
-  lastName?: string;
+  last_name?: string;
 }

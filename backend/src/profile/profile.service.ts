@@ -9,7 +9,7 @@ export class ProfileService {
     async editProfile(dto: EditProfileDto) {
         const profile = await this.prisma.profile.findUnique({
             where: {
-                userId: dto.userId
+                user_id: dto.user_id
             }
         });
 
@@ -19,14 +19,14 @@ export class ProfileService {
 
         let updatedProfile = await this.prisma.profile.update({
             where: {
-                userId: dto.userId,
+                user_id: dto.user_id,
             },
             data: {
                 ...dto,
             },
         });
 
-        return (({id, userId, ...p}) => p)(updatedProfile);
+        return (({id, user_id, ...p}) => p)(updatedProfile);
     }
 
 

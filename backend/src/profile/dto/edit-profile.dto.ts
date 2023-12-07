@@ -8,7 +8,7 @@ export class EditProfileDto {
 
   @IsNumber()
   @IsOptional()
-  userId?: number;
+  user_id?: number;
 
   @IsString()
   @IsOptional()

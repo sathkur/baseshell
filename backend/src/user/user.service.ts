@@ -8,12 +8,13 @@ export class UserService {
   constructor(private prisma: PrismaService) {}
 
   async editUser(
-    userId: number,
+    user_id: number,
     dto: EditUserDto,
   ) {
+    console.log("dto: ", dto)
     const user = await this.prisma.user.update({
       where: {
-        id: userId,
+        id: user_id,
       },
       data: {
         ...dto,
@@ -69,13 +70,13 @@ export class UserService {
       await this.prisma.$transaction(async (tx) => {
         const deletedRoles = await tx.userRole.deleteMany({
           where: {
-            userId: userToDelete.id
+            user_id: userToDelete.id
           }
         });
 
         const deletedProfile = await tx.profile.delete({
           where: {
-            userId: userToDelete.id
+            user_id: userToDelete.id
           }
         });
 

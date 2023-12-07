@@ -13,8 +13,8 @@ datasource db {
 
 model User {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
   status String?
 
   email String @unique
@@ -30,12 +30,12 @@ model User {
 
 model Profile {
   id     Int  @id @default(autoincrement())
-  firstName String
-  lastName String
+  first_name String
+  last_name String
   gender String
 
-  user   User @relation(fields: [userId], references: [id])
-  userId Int  @unique // relation scalar field (used in the `@relation` attribute above)
+  user   User @relation(fields: [user_id], references: [id])
+  user_id Int  @unique // relation scalar field (used in the `@relation` attribute above)
 
   @@map("profile")
 }
@@ -48,13 +48,13 @@ model Role {
 
 model UserRole {
   id       Int      @id @default(autoincrement())
-  userId   Int
-  roleId   Int
+  user_id   Int
+  role_id   Int
   
-  user     User     @relation(fields: [userId], references: [id])
-  role     Role     @relation(fields: [roleId], references: [id])
+  user     User     @relation(fields: [user_id], references: [id])
+  role     Role     @relation(fields: [role_id], references: [id])
   
-  @@unique([userId, roleId])
+  @@unique([user_id, role_id])
   @@map("roles")
 }
 
@@ -67,8 +67,8 @@ model Bookmark {
   description String?
   link        String
 
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
+  user_id Int
+  user   User @relation(fields: [user_id], references: [id])
 
   @@map("bookmarks")
 }
