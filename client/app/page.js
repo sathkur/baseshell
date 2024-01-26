@@ -28,6 +28,8 @@ const InputFields = () => {
         <>
 
             <input class="inputbox" type="text" placeholder="Input element"></input>
+            <input class="inputbox inputbox-success" type="text" placeholder="Success Input element"></input>
+            <input class="inputbox inputbox-error" type="text" placeholder="Error Input element"></input>
             <input id="comments" name="comments" type="checkbox" class="checkbox"></input>
         </>
     );
