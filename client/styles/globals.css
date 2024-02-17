@@ -165,6 +165,10 @@ a {
     @apply bg-red-50 border-red-500 text-red-900 placeholder-red-700 focus:ring-red-500 focus:border-red-500 dark:text-red-500 dark:placeholder-red-500 dark:border-red-500;
   }
 
+  .inputbox-error-message {
+    @apply block font-medium tracking-wide text-red-500 text-xs mt-1 ml-1
+  }
+
   .checkbox {
     @apply h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600;
   }
