@@ -1,6 +1,32 @@
+"use client"
+import axios from "axios";
+import Joi from "joi";
+import { useState } from "react";
+import { useForm } from "react-hook-form"
+import { joiResolver } from "@hookform/resolvers/joi"
+
 
 
 export default function Login() {
+  const schema = Joi.object({
+    email: Joi.string().email({ tlds: { allow: false } }).label("Email").required(),
+    password: Joi.string().min(8).label("Password").required(),
+  });
+
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm({resolver: joiResolver(schema)})
+
+  const onSubmit = (data) => {
+    console.log({data});
+    axios
+      .post("/login")
+      .then(res => {
+
+      })
+  }
 
     return (
         <div className='box my-10 mx-auto max-w-2xl'>
@@ -16,7 +42,7 @@ export default function Login() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" noValidate onSubmit={handleSubmit(onSubmit)}>
             <div>
               <label htmlFor="email" className="body1">
                 Email address
@@ -25,12 +51,12 @@ export default function Login() {
                 <input
                   id="email"
                   name="email"
-                  type="email"
                   autoComplete="email"
-                  required
-                  className="inputbox"
+                  className={"inputbox" + (errors.email ? " inputbox-error" : "")}
+                  {...register("email")}
                 />
               </div>
+              <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{errors.email?.message}</span>
             </div>
 
             <div>
@@ -48,12 +74,13 @@ export default function Login() {
                 <input
                   id="password"
                   name="password"
-                  type="password"
                   autoComplete="current-password"
-                  required
-                  className="inputbox"
+                  className={"inputbox" + (errors.password ? " inputbox-error" : "")}
+                  {...register("password")}
                 />
               </div>
+              <span class="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">{errors.password?.message}</span>
+
             </div>
 
             <div>
